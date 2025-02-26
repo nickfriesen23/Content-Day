@@ -1,9 +1,12 @@
 // Content Catalyst - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Header scroll effect
+    // Header scroll effect and mobile navigation
     const header = document.querySelector('.header');
     const scrollThreshold = 50;
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    let isMenuOpen = false;
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > scrollThreshold) {
@@ -11,6 +14,49 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
+    });
+
+    // Mobile Navigation Toggle
+    mobileNavToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        mobileNav.classList.toggle('active');
+        mobileNavToggle.classList.toggle('active');
+        document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    });
+
+    // Close mobile nav when clicking a link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            mobileNavToggle.classList.remove('active');
+            isMenuOpen = false;
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Pricing toggle functionality
+    document.querySelectorAll('.pricing-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const card = header.closest('.pricing-card');
+            const features = card.querySelector('.pricing-features');
+            const toggle = header.querySelector('.pricing-toggle');
+            const toggleText = toggle.querySelector('span');
+            
+            // Close all other cards
+            document.querySelectorAll('.pricing-features.active').forEach(el => {
+                if (el !== features) {
+                    el.classList.remove('active');
+                    const otherToggle = el.closest('.pricing-card').querySelector('.pricing-toggle');
+                    otherToggle.classList.remove('active');
+                    otherToggle.querySelector('span').textContent = 'See what\'s included';
+                }
+            });
+
+            // Toggle current card
+            features.classList.toggle('active');
+            toggle.classList.toggle('active');
+            toggleText.textContent = features.classList.contains('active') ? 'Hide details' : 'See what\'s included';
+        });
     });
 
     // Scroll reveal animations
@@ -134,8 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',

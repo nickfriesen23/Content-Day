@@ -269,6 +269,71 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
+        /* Video Grid Styles - UPDATED */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Changed from 3 to 2 columns for larger displays */
+            gap: 30px; /* Increased gap for more spacing */
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+        
+        .video-grid-item {
+            width: 100%;
+            cursor: pointer; /* Add pointer cursor to indicate clickable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-grid-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-grid .video-container {
+            margin: 0;
+            height: 0;
+            padding-bottom: 65%; /* Slightly taller aspect ratio */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+        }
+        
+        /* Play button overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+            z-index: 2;
+        }
+        
+        .video-grid-item:hover .video-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(56, 178, 172, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 32px;
+            margin-left: 8px; /* Slight offset for play icon */
+        }
+
         /* Enhanced Launch Package Styling */
         .pricing-cards-container {
             display: flex;
@@ -504,6 +569,65 @@
             font-weight: 500;
         }
 
+        /* Video Lightbox Styles */
+        .video-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .video-lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+        }
+        
+        .lightbox-video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .lightbox-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            z-index: 1001;
+        }
+
         @media (max-width: 1024px) {
             .host-card {
                 grid-template-columns: 1fr;
@@ -538,6 +662,12 @@
                 gap: 15px;
                 padding: 0 15px;
             }
+            
+            .video-grid {
+                grid-template-columns: 1fr; /* Single column on tablets */
+                gap: 20px;
+                padding: 0 15px;
+            }
 
             .hero h1 {
                 font-size: 2.8rem;
@@ -565,7 +695,7 @@
                 font-size: 16px;
             }
 
-            .bts-grid, .training-grid {
+            .bts-grid, .training-grid, .video-grid {
                 grid-template-columns: 1fr;
                 padding: 0 10px;
             }
@@ -734,8 +864,7 @@
             </div>
             
             <div class="section-header" style="margin-top: 60px;">
-                <h3 class="client-showcase-title">Jon's Transformation Journey</h3>
-                <p class="showcase-subtitle">From Entrepreneur to Visual Brand Ambassador</p>
+                <h3 class="client-showcase-title">Jon's Story</h3>
             </div>
             <div id="jon-grid" class="training-grid">
                 <!-- Jon's images will be dynamically added here -->
@@ -746,8 +875,7 @@
             </div>
             
             <div class="section-header" style="margin-top: 60px;">
-                <h3 class="client-showcase-title">Joel's Brand Evolution</h3>
-                <p class="showcase-subtitle">Capturing Authentic Leadership Presence</p>
+                <h3 class="client-showcase-title">Joel's Story</h3>
             </div>
             <div id="joel-grid" class="training-grid">
                 <!-- Joel's images will be dynamically added here -->
@@ -755,6 +883,39 @@
             
             <div class="video-container">
                 <iframe src="https://player.vimeo.com/video/1060514909" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="section-header" style="margin-top: 60px;">
+                <h3 class="client-showcase-title">Content Examples</h3>
+            </div>
+            <div class="video-grid">
+                <div class="video-grid-item" data-video-id="1060950499">
+                    <div class="video-container">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <iframe src="https://player.vimeo.com/video/1060950499" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="video-grid-item" data-video-id="1060950534">
+                    <div class="video-container">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <iframe src="https://player.vimeo.com/video/1060950534" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header" style="margin-top: 60px;">
+                <h3 class="client-showcase-title">Finetuned Upgrade</h3>
+            </div>
+            <div id="finetuned-grid" class="training-grid">
+                <!-- Finetuned Upgrade images will be dynamically added here -->
             </div>
         </div>
     </section>
@@ -808,7 +969,6 @@
                     </div>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 20px; font-style: italic; color: #4a5568;">Everyone says "our spots will go fast", and they absolutely will— especially for the AI upgrade.<br>Chat with David for more info.</p>
         </div>
     </section>
 
@@ -826,6 +986,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Video Lightbox -->
+    <div class="video-lightbox" id="videoLightbox">
+        <div class="lightbox-content">
+            <button class="close-lightbox" id="closeLightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="lightbox-video-container" id="lightboxVideoContainer">
+                <!-- Video iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Add the gallery randomization script -->
     <script>
@@ -850,7 +1022,11 @@
             "https://nick-f.imgix.net/images/jon-main-9867.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9895.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9918.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9927.jpg?fm=webp&q=50"
+            "https://nick-f.imgix.net/images/jon-main-9927.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00245__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00115__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00106__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00078__Original.png?fm=webp&q=50"
         ];
 
         // Joel's photos array
@@ -875,6 +1051,13 @@
             "https://nick-f.imgix.net/images/joel-main-9817.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9940.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9999.jpg?fm=webp&q=50"
+        ];
+
+        // Finetuned Upgrade photos array
+        const finetunedPhotos = [
+            "https://nick-f.imgix.net/images/ComfyUI_00294__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00273__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00260__Original.png?fm=webp&q=50"
         ];
 
         // Behind the Scenes photos array - using the existing images
@@ -929,14 +1112,71 @@
         document.addEventListener('DOMContentLoaded', function() {
             populateGrid('joel-grid', joelPhotos, 'training-image', 'Joel Training Example');
             populateGrid('jon-grid', jonPhotos, 'training-image', 'Jon Training Example');
+            populateGrid('finetuned-grid', finetunedPhotos, 'training-image', 'Finetuned Upgrade Example');
             populateGrid('bts-grid', btsPhotos, 'bts-image-container', 'Behind the Scenes');
+            
+            // Add animated gradient to sections for more visual engagement
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                if (index % 2 === 0) { // Add to every other section
+                    const animatedGradient = document.createElement('div');
+                    animatedGradient.className = 'animated-gradient';
+                    section.style.position = 'relative';
+                    section.style.overflow = 'hidden';
+                    section.appendChild(animatedGradient);
+                }
+            });
+
+            // Video Lightbox functionality
+            const videoItems = document.querySelectorAll('.video-grid-item');
+            const lightbox = document.getElementById('videoLightbox');
+            const lightboxVideoContainer = document.getElementById('lightboxVideoContainer');
+            const closeLightbox = document.getElementById('closeLightbox');
+            
+            // Function to open lightbox with video
+            function openVideoLightbox(videoId) {
+                // Create iframe with autoplay parameter
+                lightboxVideoContainer.innerHTML = `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            // Add click event to video items
+            videoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-video-id');
+                    openVideoLightbox(videoId);
+                });
+            });
+            
+            // Close lightbox
+            closeLightbox.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                lightboxVideoContainer.innerHTML = ''; // Remove iframe to stop video
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+            
+            // Close lightbox when clicking outside content
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    lightboxVideoContainer.innerHTML = '';
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    lightboxVideoContainer.innerHTML = '';
+                    document.body.style.overflow = '';
+                }
+            });
         });
     </script>
 
     <!-- Animation script -->
     <script src="animation.js"></script>
-    
-    <!-- Lightbox script -->
-    <script src="lightbox.js"></script>
 </body>
 </html>

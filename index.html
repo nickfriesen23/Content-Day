@@ -134,16 +134,49 @@
             }
         }
 
-        /* Behind the Scenes Section Styles - Updated to match gallery style */
-        .bts-grid {
+        /* Photo Portfolio Section Styles - Updated from Behind the Scenes */
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-top: 40px;
             padding: 0 20px;
+            max-width: 100%;
+            margin-bottom: 20px; /* Reduced bottom margin for button spacing */
         }
 
-        .bts-image-container {
+        /* See More Photos Button Styles */
+        .see-more-button {
+            display: block;
+            background: #38b2ac;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 auto 40px;
+            width: 200px;
+            text-align: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .see-more-button:hover {
+            background: #2c9a94;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .see-more-button i {
+            margin-left: 8px;
+        }
+
+        .hidden-photos {
+            display: none;
+        }
+
+        .portfolio-image-container {
             width: 100%;
             height: 0;
             padding-bottom: 100%; /* Creates a 1:1 aspect ratio (square) */
@@ -154,7 +187,7 @@
             overflow: hidden;
         }
 
-        .bts-image-container img {
+        .portfolio-image-container img {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -164,7 +197,7 @@
             background-color: #f5f5f5; /* Light background color for transparent parts */
         }
 
-        .bts-image-container:hover {
+        .portfolio-image-container:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
@@ -426,7 +459,7 @@
         .pricing-features ul li {
             margin: 15px 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             font-size: 18px;
         }
 
@@ -664,6 +697,88 @@
             z-index: 1001;
         }
 
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            padding: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials .section-title {
+            color: #38b2ac;
+        }
+        
+        .testimonials .section-subtitle {
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid #38b2ac;
+        }
+        
+        .testimonial-author {
+            flex-grow: 1;
+        }
+        
+        .testimonial-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            color: white;
+        }
+        
+        .testimonial-title {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 5px 0 0;
+        }
+        
+        .testimonial-content {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .testimonial-video {
+            margin-top: 20px;
+        }
+
         @media (max-width: 1024px) {
             .host-card {
                 grid-template-columns: 1fr;
@@ -693,13 +808,13 @@
                 gap: 20px;
             }
 
-            .bts-grid, .training-grid {
+            .portfolio-grid, .training-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
                 padding: 0 15px;
             }
             
-            .video-grid {
+            .video-grid, .testimonial-grid {
                 grid-template-columns: 1fr; /* Single column on tablets */
                 gap: 20px;
                 padding: 0 15px;
@@ -707,6 +822,37 @@
 
             .hero h1 {
                 font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Improved mobile styles for Jon and Joel's sections */
+            .client-showcase-title {
+                font-size: 28px;
+                margin: 30px 0 15px;
+            }
+            
+            .showcase-subtitle {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+            
+            .training-grid {
+                gap: 10px;
+                padding: 0 10px;
+            }
+            
+            .video-container {
+                margin: 1.5rem auto;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .testimonial-avatar {
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -731,7 +877,7 @@
                 font-size: 16px;
             }
 
-            .bts-grid, .training-grid, .video-grid {
+            .portfolio-grid, .training-grid, .video-grid, .testimonial-grid {
                 grid-template-columns: 1fr;
                 padding: 0 10px;
             }
@@ -739,6 +885,28 @@
             .hero h1 {
                 font-size: 2.2rem;
                 gap: 10px;
+            }
+            
+            /* Additional mobile improvements for Jon and Joel's sections */
+            .training-image {
+                margin-bottom: 10px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .play-button i {
+                font-size: 24px;
+            }
+            
+            .testimonial-name {
+                font-size: 16px;
+            }
+            
+            .testimonial-content {
+                font-size: 14px;
             }
         }
     </style>
@@ -880,45 +1048,61 @@
         </div>
     </section>
 
-    <section id="behind-scenes" class="section">
+    <section id="photo-portfolio" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Behind the Scenes</h2>
-                <p class="section-subtitle">Take a peek into our content creation process and the magic that happens during our sessions.</p>
+                <h2 class="section-title">Photo Portfolio</h2>
+                <p class="section-subtitle">A collection of our professional photography showcasing the quality and style of our work.</p>
             </div>
-            <div id="bts-grid" class="bts-grid">
-                <!-- Behind the scenes images will be dynamically added here -->
+            <div id="portfolio-grid" class="portfolio-grid">
+                <!-- Portfolio images will be dynamically added here by the JavaScript -->
             </div>
         </div>
     </section>
 
-    <section id="past-clients" class="section past-clients">
+    <section id="testimonials" class="section testimonials">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Past Clients</h2>
-                <p class="section-subtitle">See some examples of our previous work and the results we've delivered.</p>
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Hear what our clients have to say about their experience with us.</p>
             </div>
             
-            <div class="section-header" style="margin-top: 60px;">
-                <h3 class="client-showcase-title">Jon's Story</h3>
-            </div>
-            <div id="jon-grid" class="training-grid">
-                <!-- Jon's images will be dynamically added here -->
-            </div>
-            
-            <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1060514932" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            
-            <div class="section-header" style="margin-top: 60px;">
-                <h3 class="client-showcase-title">Joel's Story</h3>
-            </div>
-            <div id="joel-grid" class="training-grid">
-                <!-- Joel's images will be dynamically added here -->
-            </div>
-            
-            <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1060514909" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://nick-f.imgix.net/images/jon-main-9745.jpg?fm=webp&q=50" alt="Jon" class="testimonial-avatar">
+                        <div class="testimonial-author">
+                            <h4 class="testimonial-name">Jon</h4>
+                            <p class="testimonial-title">Entrepreneur</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"The content day experience was incredible. The team captured my personality perfectly, and the photos and videos have been game-changers for my brand presence online."</p>
+                    </div>
+                    <div class="testimonial-video">
+                        <div class="video-container">
+                            <iframe src="https://player.vimeo.com/video/1060514932" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://nick-f.imgix.net/images/joel-main-9481.jpg?fm=webp&q=50" alt="Joel" class="testimonial-avatar">
+                        <div class="testimonial-author">
+                            <h4 class="testimonial-name">Joel</h4>
+                            <p class="testimonial-title">Business Coach</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Working with this team was one of the best decisions I've made for my business. The quality of content I received has elevated my brand and helped me connect with my audience on a deeper level."</p>
+                    </div>
+                    <div class="testimonial-video">
+                        <div class="video-container">
+                            <iframe src="https://player.vimeo.com/video/1060514909" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="section-header" style="margin-top: 60px;">
@@ -945,13 +1129,6 @@
                         <iframe src="https://player.vimeo.com/video/1060950534" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-            </div>
-            
-            <div class="section-header" style="margin-top: 60px;">
-                <h3 class="client-showcase-title">Finetuned Upgrade</h3>
-            </div>
-            <div id="finetuned-grid" class="training-grid">
-                <!-- Finetuned Upgrade images will be dynamically added here -->
             </div>
         </div>
     </section>
@@ -1037,78 +1214,120 @@
 
     <!-- Add the gallery randomization script -->
     <script>
-        // Jon's photos array
+        // Photo arrays organized by category for easy editing
         const jonPhotos = [
-            "https://nick-f.imgix.net/images/jon-main-0125.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-0135.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9532.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9554.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9575.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9580.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9590.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9700.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9703.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9720.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9735.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9742.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9745.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9747.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9748.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9837.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9867.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9580.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9720.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/jon-main-9895.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9918.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/jon-main-9927.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00245__Original.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00115__Original.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00106__Original.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00078__Original.png?fm=webp&q=50"
+            "https://nick-f.imgix.net/images/jon-main-9747.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9700.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9575.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9745.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/jon-main-9748.jpg?fm=webp&q=50"
         ];
-
-        // Joel's photos array
+        
         const joelPhotos = [
-            "https://nick-f.imgix.net/images/joel-main-0055.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-0060.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9321.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9331.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9337.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9353.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9365.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9418.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9439.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9488.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9786.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9353.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9798.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9940.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9999.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9463.jpg?fm=webp&q=50",
             "https://nick-f.imgix.net/images/joel-main-9481.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9488.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9626.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9786.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9796.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9798.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9814.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9817.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9940.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/joel-main-9999.jpg?fm=webp&q=50"
+            "https://nick-f.imgix.net/images/joel-main-9439.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-0060.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/joel-main-9817.jpg?fm=webp&q=50"
         ];
-
-        // Finetuned Upgrade photos array
-        const finetunedPhotos = [
-            "https://nick-f.imgix.net/images/ComfyUI_00294__Original.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00273__Original.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/ComfyUI_00260__Original.png?fm=webp&q=50"
+        
+        const davidPhotos = [
+            "https://nick-f.imgix.net/images/david-extra-9048.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9145.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9188.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9173.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9194.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9165.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9005.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9075.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9155.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-8993.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9024.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-9097.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/david-extra-8990.jpg?fm=webp&q=50"
         ];
-
-        // Behind the Scenes photos array - using the existing images
-        const btsPhotos = [
-            "https://nick-f.imgix.net/images/bts/bts-8842.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/bts/bts-8847.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/bts/bts-8848.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/bts/bts-8915.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/bts/bts-8933.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/bts/bts-9270.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/david/david-9043.jpg?fm=webp&q=50", // Using available David images that already exist
+        
+        const tmaPhotos = [
+            "https://nick-f.imgix.net/images/Anais-TMA-203.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/matchartist-0141.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/matchartist-8459.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tma-best-9762.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/favs-6479.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tma-favs-9811.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tmafav-1046.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tmafavs-7769.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tma-fav-7256.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/favs-0980.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tma-best-3519.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/IMG_5980.jpg?fm=webp&q=50"
+        ];
+        
+        const aiPhotos = [
+            "https://nick-f.imgix.net/images/AI-Upgrade-1.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ai-gen-1.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/Network-1.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/Network-3.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ai-gen-4.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/Network-5.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ai-gen-3.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/AI-Upgrade-3.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/Network-2.png?fm=webp&q=50",
             "https://nick-f.imgix.net/images/AI-Upgrade-2.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/Network-4.png?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/space/space-8598.jpg?fm=webp&q=50",
-            "https://nick-f.imgix.net/images/space/space-9283.jpg?fm=webp&q=50"
+            "https://nick-f.imgix.net/images/Network-6.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/AI-Upgrade-4.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ai-gen-2.png?fm=webp&q=50"
+        ];
+        
+        const comfyUIPhotos = [
+            "https://nick-f.imgix.net/images/ComfyUI_00078__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00106__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00245__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00115__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00260__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00273__Original.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/ComfyUI_00294__Original.png?fm=webp&q=50"
+        ];
+        
+        const miscPhotos = [
+            "https://nick-f.imgix.net/images/669e9d0fbaa81c8438b2372e_brodie-vogler-1823.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/669e9d126c5ab0f8baeffde6_charlie-tma-6073.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/669e9d1309bd25fd254579fa_anwar_thematchartist-5666.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/66bbefcb8b8e32f869fd7f6b_tma-4526.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/66ce46ecb62bba5ada639aae_jake%20Large.jpeg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/66ce46eddc91669ec513bb6b_josh-tma-5088%20Large.jpeg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/66ce558d0595c1beecf2a141_brodie-vogler-2388%20Large.jpeg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/justen-tma-9079.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tejesh-tma-0033.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/tinder-dating-profile.avif?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/WhatsApp%20Image%202025-02-24%20at%2012.39.55_f622a680.jpg?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/IMG_6442.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/IMG_6443.png?fm=webp&q=50",
+            "https://nick-f.imgix.net/images/IMG_6444.png?fm=webp&q=50"
+        ];
+        
+        // Combine all photo arrays into one array
+        const allPhotos = [
+            ...jonPhotos,
+            ...joelPhotos,
+            ...davidPhotos,
+            ...tmaPhotos,
+            ...aiPhotos,
+            ...comfyUIPhotos,
+            ...miscPhotos
         ];
 
         // Function to shuffle array (Fisher-Yates algorithm)
@@ -1121,17 +1340,19 @@
         }
 
         // Function to populate grids with images
-        function populateGrid(gridId, photos, containerClass = 'training-image', altText = 'Photo') {
+        function populateGrid(gridId, photos, containerClass = 'training-image', altText = 'Photo', initialLimit = null) {
             const grid = document.getElementById(gridId);
-            const shuffledPhotos = shuffleArray([...photos]); // Create a copy and shuffle
+            // Create a copy and shuffle - this ensures different random photos each page load
+            const shuffledPhotos = shuffleArray([...photos]);
             
             // Clear existing content
             grid.innerHTML = '';
             
-            // Add photos to the grid (or fewer if less are available)
-            const numberOfPhotos = Math.min(12, shuffledPhotos.length);
+            // Determine how many photos to show initially
+            const photosToShow = initialLimit ? Math.min(initialLimit, shuffledPhotos.length) : shuffledPhotos.length;
             
-            for (let i = 0; i < numberOfPhotos; i++) {
+            // Add initial photos to the grid
+            for (let i = 0; i < photosToShow; i++) {
                 const container = document.createElement('div');
                 container.className = containerClass;
                 
@@ -1141,6 +1362,58 @@
                 
                 container.appendChild(img);
                 grid.appendChild(container);
+            }
+            
+            // If we have more photos than the initial limit, add the remaining photos as hidden
+            if (initialLimit && shuffledPhotos.length > initialLimit) {
+                // Create a container for hidden photos
+                const hiddenContainer = document.createElement('div');
+                hiddenContainer.className = 'hidden-photos';
+                hiddenContainer.id = `${gridId}-hidden`;
+                
+                // Add the remaining photos to the hidden container
+                for (let i = initialLimit; i < shuffledPhotos.length; i++) {
+                    const container = document.createElement('div');
+                    container.className = containerClass;
+                    
+                    const img = document.createElement('img');
+                    img.src = shuffledPhotos[i];
+                    img.alt = altText;
+                    
+                    container.appendChild(img);
+                    hiddenContainer.appendChild(container);
+                }
+                
+                // Add the hidden container after the grid
+                grid.parentNode.insertBefore(hiddenContainer, grid.nextSibling);
+                
+                // Create and add the "See More Photos" button
+                const seeMoreButton = document.createElement('button');
+                seeMoreButton.className = 'see-more-button';
+                seeMoreButton.innerHTML = 'See More Photos <i class="fas fa-chevron-down"></i>';
+                seeMoreButton.id = `${gridId}-see-more`;
+                
+                // Add click event to the button
+                seeMoreButton.addEventListener('click', function() {
+                    const hiddenPhotos = document.getElementById(`${gridId}-hidden`);
+                    
+                    if (hiddenPhotos.classList.contains('hidden-photos')) {
+                        // Show hidden photos
+                        hiddenPhotos.classList.remove('hidden-photos');
+                        // Move all photos from hidden container to the main grid
+                        while (hiddenPhotos.firstChild) {
+                            grid.appendChild(hiddenPhotos.firstChild);
+                        }
+                        // Update button text
+                        this.innerHTML = 'Show Less Photos <i class="fas fa-chevron-up"></i>';
+                    } else {
+                        // Hide photos again (this would require re-populating the grid)
+                        populateGrid(gridId, photos, containerClass, altText, initialLimit);
+                    }
+                });
+                
+                // Add the button after the grid
+                grid.parentNode.insertBefore(seeMoreButton, hiddenContainer);
             }
         }
 
@@ -1155,13 +1428,10 @@
             }
             
             // Preload all images
-            preloadImages([...jonPhotos, ...joelPhotos, ...finetunedPhotos, ...btsPhotos]);
+            preloadImages(allPhotos);
             
-            // Populate grids immediately
-            populateGrid('joel-grid', joelPhotos, 'training-image', 'Joel Training Example');
-            populateGrid('jon-grid', jonPhotos, 'training-image', 'Jon Training Example');
-            populateGrid('finetuned-grid', finetunedPhotos, 'training-image', 'Finetuned Upgrade Example');
-            populateGrid('bts-grid', btsPhotos, 'bts-image-container', 'Behind the Scenes');
+            // Populate portfolio grid with initial 6 photos (randomized)
+            populateGrid('portfolio-grid', allPhotos, 'portfolio-image-container', 'Photo Portfolio', 6);
             
             // Add animated gradient to sections for more visual engagement
             const sections = document.querySelectorAll('.section');
